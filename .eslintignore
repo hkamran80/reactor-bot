@@ -1,2 +1,8 @@
-node_modules
-build
+node_modules/*
+.gitignore
+.dccache
+
+**/dist/*
+**/node_modules/*
+**/.gitignore
+**/.dccache

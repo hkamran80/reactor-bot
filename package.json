@@ -3,11 +3,12 @@
     "version": "1.0.0",
     "description": "A starter for TypeScript projects",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "lint": "eslint . --ext .ts --fix",
         "format": "prettier ./src/ --write",
-        "build": "rimraf ./build && tsc",
-        "start": "npm run build && cd build && node --es-module-specifier-resolution=node index.js"
+        "build": "rimraf ./dist && tsc",
+        "start": "npm run build && cd dist && node --es-module-specifier-resolution=node index.js"
     },
     "keywords": [
         "typescript",
@@ -21,8 +22,9 @@
         "url": "https://hkamran.com"
     },
     "license": "GPLv3",
+    "dependencies": {},
     "devDependencies": {
-        "@hkamran/prettier-config": "^1.0.0",
+        "@hkamran/prettier-config": "^1.1.1",
         "@types/node": "^17.0.18",
         "@typescript-eslint/eslint-plugin": "^5.12.0",
         "@typescript-eslint/parser": "^5.12.0",
