@@ -3,5 +3,5 @@ export type Users = {
 };
 
 export type Config = {
-    [guildId: string]: Users;   
+    [guildId: string]: Users;
 };

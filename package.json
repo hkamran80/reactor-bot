@@ -25,7 +25,8 @@
         "discord-api-types": "^0.27.3",
         "discord.js": "^13.6.0",
         "dotenv": "^16.0.0",
-        "emoji-regex": "^10.0.0"
+        "emoji-regex": "^10.0.0",
+        "tslog": "^3.3.3"
     },
     "devDependencies": {
         "@hkamran/prettier-config": "^1.1.1",

@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import emojiRegex from "emoji-regex";
 import { Client, Intents } from "discord.js";
 import { getUserConfig, removeUserConfig, updateConfig } from "./filesystem";
+import { logger } from "./global";
 
 dotenv.config();
 
@@ -16,7 +17,7 @@ const client = new Client({
 
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
-    console.log("Ready!");
+    logger.info("Ready!");
 });
 
 client.login(process.env.DISCORD_TOKEN);

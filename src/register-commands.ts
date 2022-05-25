@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
 import dotenv from "dotenv";
+import { logger } from "./global";
 
 dotenv.config();
 
@@ -50,10 +51,10 @@ rest.put(
     { body: commands },
 )
     .then(() =>
-        console.log(
+        logger.info(
             `Successfully registered ${
                 isGlobalRegistration ? "global" : ""
             } application commands`,
         ),
     )
-    .catch(console.error);
+    .catch(logger.error);
