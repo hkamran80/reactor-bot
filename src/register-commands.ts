@@ -36,10 +36,10 @@ const rest = new REST({ version: "9" }).setToken(
     process.env.DISCORD_TOKEN as string,
 );
 
-const global = process.argv.indexOf("--global") !== -1;
+const isGlobalRegistration = process.argv.indexOf("--global") !== -1;
 
 rest.put(
-    global
+    isGlobalRegistration
         ? // If "--global"
           Routes.applicationCommands(process.env.DISCORD_CLIENT_ID as string)
         : // Else
@@ -52,7 +52,7 @@ rest.put(
     .then(() =>
         console.log(
             `Successfully registered ${
-                global ? "global" : ""
+                isGlobalRegistration ? "global" : ""
             } application commands`,
         ),
     )
