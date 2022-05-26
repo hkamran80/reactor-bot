@@ -1,6 +1,6 @@
 import { existsSync } from "fs";
 import { readFile, writeFile } from "fs/promises";
-import type { Config } from "./types";
+import type { Config, Users } from "./types";
 
 const FILENAME = "reactor.json";
 
@@ -13,6 +13,23 @@ const readConfig = async (): Promise<Config> => {
         return JSON.parse((await readFile(FILENAME)).toString());
     } else {
         return {};
+    }
+};
+
+/**
+ * Get the config for a specified guild
+ * @param {string} guildId The ID of the guild
+ * @returns {Promise<Users | null>} The guild config if set, otherwise `null`
+ */
+export const getGuildConfig = async (
+    guildId: string,
+): Promise<Users | null> => {
+    const config = await readConfig();
+
+    if (Object.keys(config).indexOf(guildId) !== -1) {
+        return config[guildId];
+    } else {
+        return null;
     }
 };
 
@@ -38,7 +55,7 @@ export const getUserConfig = async (
 };
 
 /**
- * Update the config with an emoji for a specific user in a specific guild
+ * Update the config with an emoji for a specified user in a specified guild
  * @param {string} guildId The ID of the guild to update
  * @param {string} userId The ID of the user to update
  * @param {string} emoji The emoji string
@@ -60,7 +77,7 @@ export const updateConfig = async (
 };
 
 /**
- * Remove a user from a specific guild's config
+ * Remove a user from a specified guild's config
  * @param {string} guildId The ID of the guild that the user exists in
  * @param {string} userId The ID of the user to remove a config object for
  */

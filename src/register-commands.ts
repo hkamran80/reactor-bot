@@ -31,6 +31,9 @@ const commands = [
                 .setRequired(true)
                 .setDescription("The user to not react to"),
         ),
+    new SlashCommandBuilder()
+        .setName("list-reactions")
+        .setDescription("List all the reactions set in the current server"),
 ];
 
 const rest = new REST({ version: "9" }).setToken(
